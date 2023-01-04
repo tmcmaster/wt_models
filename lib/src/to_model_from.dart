@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:csv/csv.dart';
 
 class ToModelFrom<T> {
-  static const _csvToList = CsvToListConverter();
+  static const _csvToList = CsvToListConverter(eol: "\n");
 
   final T Function(Map<String, dynamic>) json;
   late List<String> _titles;
@@ -22,6 +22,11 @@ class ToModelFrom<T> {
     return csvListToModelList(csvList.sublist(1));
   }
 
+  List<T> csvListString(String csvString) {
+    final csvList = _csvToList.convert(csvString, eol: '\n');
+    return csvListToModelList(csvList.sublist(1));
+  }
+
   List<T> jsonListFile(File file) => fromJsonListString(file.readAsStringSync());
   T fromJsonFile(File file) => fromJsonString(file.readAsStringSync());
 
@@ -33,7 +38,9 @@ class ToModelFrom<T> {
   T fromJson(Map<String, dynamic> jsonMap) => json(jsonMap);
 
   T csvToModel(List<dynamic> csv) {
-    final jsonData = {for (var i = 0; i < _titles.length; i++) _titles[i]: csv[i] == '' ? null : csv[i]};
+    final jsonData = {
+      for (var i = 0; i < _titles.length; i++) _titles[i]: csv[i] == '' ? null : csv[i]
+    };
     return json(jsonData);
   }
 
