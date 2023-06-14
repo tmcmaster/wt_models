@@ -1,4 +1,5 @@
 import 'dart:convert' as convert show json;
+import 'dart:io';
 
 import 'package:csv/csv.dart';
 
@@ -54,5 +55,14 @@ class FromModelTo<T extends JsonSupport> {
       _titles,
       ...csvList,
     ];
+  }
+
+  void csvFileModelList(List<T> models, File file) {
+    file.writeAsStringSync(csvStringModelList(models));
+  }
+
+  String csvStringModelList(List<T> models) {
+    final csvList = csvListModelList(models);
+    return _listToCsv.convert(csvList);
   }
 }
