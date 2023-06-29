@@ -55,4 +55,9 @@ class ToModelFrom<T> {
   List<T> jsonListToModelList(List<Map<String, dynamic>> jsonList) {
     return jsonList.map((jsonMap) => json(jsonMap)).toList();
   }
+
+  T dynamicMaoToModel(Map<dynamic, dynamic> dynamicMap) {
+    final Map<String, dynamic> newMap = Map<String, dynamic>.from(dynamicMap);
+    return json(newMap);
+  }
 }
