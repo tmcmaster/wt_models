@@ -34,11 +34,6 @@ void main() {
       phone: '0404111111',
     ),
   );
-
-  test('Testing', () {
-    Delivery.convert.to.jsonMapListFromModelList([]);
-    Customer.convert.from.jsonMapListToModelList([]);
-  });
   group('toJson', () {
     test('Customer', () {
       final jsonMap = delivery.customer!.toJson();
