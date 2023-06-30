@@ -1,19 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wt_models/src/from_model_to.dart';
 import 'package:wt_models/src/order_support.dart';
-import 'package:wt_models/src/to_model_from.dart';
-
-import 'customer.dart';
+import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/v2/model_transform.dart';
 
 part 'product.freezed.dart';
 part 'product.g.dart';
 
 @freezed
-class Product extends BaseModel<Product> with _$Product, OrderSupport {
-  static final from = ToModelFrom<Product>(json: _Product.fromJson, titles: _titles);
-  static final to = FromModelTo<Product>(titles: _titles);
-
-  static final _titles = ['id', 'title', 'price', 'weight'];
+class Product extends BaseModelV2<Product> with _$Product, OrderSupport {
+  static final convert = ModelTransform<Product>(
+    titles: ['id', 'title', 'order', 'price', 'weight'],
+    jsonToModel: Product.fromJson,
+    none: Product.empty(),
+  );
 
   factory Product({
     required String id,
@@ -27,6 +26,14 @@ class Product extends BaseModel<Product> with _$Product, OrderSupport {
 
   factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 
+  factory Product.empty() => Product(
+        id: '',
+        title: '',
+        order: 0.0,
+        price: 0.0,
+        weight: 0.0,
+      );
+
   @override
   String getId() => id;
 
@@ -35,4 +42,7 @@ class Product extends BaseModel<Product> with _$Product, OrderSupport {
 
   @override
   double getOrder() => order;
+
+  @override
+  List<String> getTitles() => convert.to.titles;
 }

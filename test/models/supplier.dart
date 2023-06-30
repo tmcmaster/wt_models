@@ -1,18 +1,17 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wt_models/src/from_model_to.dart';
-import 'package:wt_models/src/to_model_from.dart';
-
-import 'customer.dart';
+import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/v2/model_transform.dart';
 
 part 'supplier.freezed.dart';
 part 'supplier.g.dart';
 
 @freezed
-class Supplier extends BaseModel<Supplier> with _$Supplier {
-  static final from = ToModelFrom<Supplier>(json: _Supplier.fromJson, titles: _titles);
-  static final to = FromModelTo<Supplier>(titles: _titles);
-
-  static final _titles = ['id', 'name'];
+class Supplier extends BaseModelV2<Supplier> with _$Supplier {
+  static final convert = ModelTransform<Supplier>(
+    titles: ['id', 'name'],
+    jsonToModel: Supplier.fromJson,
+    none: Supplier.empty(),
+  );
 
   factory Supplier({
     required String id,
@@ -24,9 +23,18 @@ class Supplier extends BaseModel<Supplier> with _$Supplier {
 
   factory Supplier.fromJson(Map<String, dynamic> json) => _$SupplierFromJson(json);
 
+  factory Supplier.empty() => Supplier(
+        id: '',
+        name: '',
+        code: '',
+      );
+
   @override
   String getId() => id;
 
   @override
   String getTitle() => name;
+
+  @override
+  List<String> getTitles() => convert.to.titles;
 }

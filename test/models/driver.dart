@@ -1,18 +1,17 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wt_models/src/from_model_to.dart';
-import 'package:wt_models/src/to_model_from.dart';
-
-import 'customer.dart';
+import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/v2/model_transform.dart';
 
 part 'driver.freezed.dart';
 part 'driver.g.dart';
 
 @freezed
-class Driver extends BaseModel<Driver> with _$Driver {
-  static final from = ToModelFrom<Driver>(json: _Driver.fromJson, titles: _titles);
-  static final to = FromModelTo<Driver>(titles: _titles);
-
-  static final _titles = ['id', 'name', 'phone'];
+class Driver extends BaseModelV2<Driver> with _$Driver {
+  static final convert = ModelTransform<Driver>(
+    titles: ['id', 'name', 'phone'],
+    jsonToModel: Driver.fromJson,
+    none: Driver.empty(),
+  );
 
   factory Driver({
     required String id,
@@ -24,9 +23,18 @@ class Driver extends BaseModel<Driver> with _$Driver {
 
   factory Driver.fromJson(Map<String, dynamic> json) => _$DriverFromJson(json);
 
+  factory Driver.empty() => Driver(
+        id: '',
+        name: '',
+        phone: ',',
+      );
+
   @override
   String getId() => id;
 
   @override
   String getTitle() => name;
+
+  @override
+  List<String> getTitles() => convert.to.titles;
 }

@@ -33,3 +33,4 @@ hold
 junk
 *.g.dart
 *.freezed.dart
+coverage

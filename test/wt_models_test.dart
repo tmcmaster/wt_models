@@ -35,6 +35,10 @@ void main() {
     ),
   );
 
+  test('Testing', () {
+    Delivery.convert.to.jsonMapListFromModelList([]);
+    Customer.convert.from.jsonMapListToModelList([]);
+  });
   group('toJson', () {
     test('Customer', () {
       final jsonMap = delivery.customer!.toJson();

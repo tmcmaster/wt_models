@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wt_models/src/from_model_to.dart';
-import 'package:wt_models/src/to_model_from.dart';
+import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/v2/model_transform.dart';
 
 import 'customer.dart';
 import 'driver.dart';
@@ -10,11 +10,12 @@ part 'delivery.freezed.dart';
 part 'delivery.g.dart';
 
 @freezed
-class Delivery extends BaseModel<Delivery> with _$Delivery {
-  static final from = ToModelFrom<Delivery>(json: _Delivery.fromJson, titles: _titles);
-  static final to = FromModelTo<Delivery>(titles: _titles);
-
-  static final _titles = ['customer', 'driver', 'supplier'];
+class Delivery extends BaseModelV2<Delivery> with _$Delivery {
+  static final convert = ModelTransform<Delivery>(
+    titles: ['customer', 'driver', 'supplier'],
+    jsonToModel: Delivery.fromJson,
+    none: Delivery(),
+  );
 
   factory Delivery({
     Customer? customer,
@@ -31,4 +32,7 @@ class Delivery extends BaseModel<Delivery> with _$Delivery {
 
   @override
   String getTitle() => customer?.getTitle() ?? 'Customer';
+
+  @override
+  List<String> getTitles() => convert.to.titles;
 }
