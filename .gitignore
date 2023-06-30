@@ -28,3 +28,8 @@ migrate_working_dir/
 .dart_tool/
 .packages
 build/
+
+hold
+junk
+*.g.dart
+*.freezed.dart

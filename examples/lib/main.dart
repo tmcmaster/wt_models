@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wt_logging/wt_logging.dart';
 import 'package:wt_models_examples/models/contact_details.dart';
 
 void main() {
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
 }
 
 class DemoPage extends StatelessWidget {
+  static final log = logger(DemoPage, level: Level.debug);
+
   DemoPage({super.key});
 
   final contactDetails = ContactDetails(
@@ -31,18 +34,21 @@ class DemoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String jsonMapString = ContactDetails.to.jsonStringFromMode(contactDetails);
-    Map<String, dynamic> jsonData = ContactDetails.to.jsonFromModel(contactDetails);
-    List<Map<String, dynamic>> jsonListOfMaps =
-        ContactDetails.to.jsonListFromModelList([contactDetails]);
-    List<List<dynamic>> csvData = ContactDetails.to.csvListModelList([contactDetails]);
+    final jsonMapString = ContactDetails.to.jsonStringFromMode(contactDetails);
+    final jsonData = ContactDetails.to.jsonFromModel(contactDetails);
+    final jsonListOfMaps = ContactDetails.to.jsonListFromModelList([contactDetails]);
+    final csvData = ContactDetails.to.csvListModelList([contactDetails]);
 
-    ContactDetails contactDetailsFromJsonString = ContactDetails.from.fromJsonString(jsonMapString);
-    ContactDetails contactDetailsFromJsonData = ContactDetails.from.fromJson(jsonData);
-    List<ContactDetails> contactDetailsFromListOfJsonMaps =
+    final ContactDetails contactDetailsFromJsonString =
+        ContactDetails.from.fromJsonString(jsonMapString);
+    log.d('contactDetailsFromJsonString: $contactDetailsFromJsonString');
+    final ContactDetails contactDetailsFromJsonData = ContactDetails.from.fromJson(jsonData);
+    log.d('contactDetailsFromJsonData: $contactDetailsFromJsonData');
+    final contactDetailsFromListOfJsonMaps =
         ContactDetails.from.jsonListToModelList(jsonListOfMaps);
-    List<ContactDetails> contactDetailsFromCsvData =
-        ContactDetails.from.csvListToModelList(csvData);
+    log.d('contactDetailsFromListOfJsonMaps: $contactDetailsFromListOfJsonMaps');
+    final contactDetailsFromCsvData = ContactDetails.from.csvListToModelList(csvData);
+    log.d('contactDetailsFromCsvData: $contactDetailsFromCsvData');
 
     return Scaffold(
       appBar: AppBar(

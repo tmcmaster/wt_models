@@ -3,8 +3,9 @@ import 'dart:io';
 
 import 'package:csv/csv.dart';
 
+// TODO: need to review all of the methods and design a DSL that is cleaner.
 class ToModelFrom<T> {
-  static const _csvToList = CsvToListConverter(eol: "\n");
+  static const _csvToList = CsvToListConverter(eol: '\n');
 
   final T Function(Map<String, dynamic>) json;
   late List<String> _titles;
@@ -30,10 +31,15 @@ class ToModelFrom<T> {
   List<T> jsonListFile(File file) => fromJsonListString(file.readAsStringSync());
   T fromJsonFile(File file) => fromJsonString(file.readAsStringSync());
 
-  List<T> fromJsonListString(String jsonString) =>
-      convert.json.decode(jsonString).map((jsonMap) => json(jsonMap)).toList();
+  List<T> fromJsonListString(String jsonString) {
+    final List jsonList = convert.json.decode(jsonString) as List;
+    return jsonList.map((jsonMap) => json(jsonMap as Map<String, dynamic>)).toList();
+  }
 
-  T fromJsonString(String jsonString) => json(convert.json.decode(jsonString));
+  T fromJsonString(String jsonString) {
+    final jsonMap = convert.json.decode(jsonString);
+    return json(jsonMap as Map<String, dynamic>);
+  }
 
   T fromJson(Map<String, dynamic> jsonMap) => json(jsonMap);
 

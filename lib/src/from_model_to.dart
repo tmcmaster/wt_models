@@ -2,8 +2,7 @@ import 'dart:convert' as convert show json;
 import 'dart:io';
 
 import 'package:csv/csv.dart';
-
-import 'json_support.dart';
+import 'package:wt_models/src/json_support.dart';
 
 class FromModelTo<T extends JsonSupport> {
   static const _listToCsv = ListToCsvConverter(delimitAllFields: true);

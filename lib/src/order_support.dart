@@ -1,0 +1,3 @@
+mixin OrderSupport {
+  double getOrder();
+}

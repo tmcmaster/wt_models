@@ -5,7 +5,7 @@ part 'contact_details.freezed.dart';
 part 'contact_details.g.dart';
 
 @freezed
-class ContactDetails with _$ContactDetails, JsonSupport {
+class ContactDetails extends IdJsonSupport<ContactDetails> with _$ContactDetails {
   factory ContactDetails({
     required String name,
     required String address,
@@ -22,4 +22,7 @@ class ContactDetails with _$ContactDetails, JsonSupport {
   static final to = FromModelTo<ContactDetails>(titles: titles);
 
   factory ContactDetails.fromJson(Map<String, dynamic> json) => _$ContactDetailsFromJson(json);
+
+  @override
+  String getId() => name;
 }

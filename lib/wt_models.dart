@@ -1,3 +1,4 @@
+/// This is a library for using freezed to help manage models.
 library wt_models;
 
 export 'src/from_model_to.dart';

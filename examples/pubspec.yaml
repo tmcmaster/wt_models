@@ -4,23 +4,37 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
+  sdk: '>=3.0.3 <4.0.0'
+
+# Scripts to be run with rps
+scripts:
+  init: flutter pub get
+  clean: flutter clean
+  refresh: flutter clean; flutter pub get
+  test: flutter test
+  analise: flutter analyze
+  freezed:
+    build: dart run build_runner build --delete-conflicting-outputs
 
 dependencies:
+  cupertino_icons:
   flutter:
     sdk: flutter
   freezed:
   freezed_annotation:
+  json_annotation: "^4.8.1"
   json_serializable:
-  cupertino_icons:
+  wt_logging:
+    git:
+      url: https://github.com/tmcmaster/wt_logging.git
   wt_models:
     path: ..
 
 dev_dependencies:
+  build_runner:
+  flutter_lints:
   flutter_test:
     sdk: flutter
-  flutter_lints:
-  build_runner:
 
 flutter:
   uses-material-design: true
