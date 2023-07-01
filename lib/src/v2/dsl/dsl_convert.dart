@@ -1,7 +1,7 @@
 import 'package:wt_models/src/v2/base_model_v2.dart';
 import 'package:wt_models/src/v2/dsl/dsl.dart';
-import 'package:wt_models/src/v2/dsl/dsl_convert_from.dart';
-import 'package:wt_models/src/v2/dsl/dsl_convert_to.dart';
+import 'package:wt_models/src/v2/dsl/from/dsl_convert_from.dart';
+import 'package:wt_models/src/v2/dsl/to/dsl_convert_to.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
 class DslConvert<T extends BaseModelV2<T>> {
@@ -14,6 +14,7 @@ class DslConvert<T extends BaseModelV2<T>> {
     required T none,
   }) {
     _dsl = Dsl<T>(
+      convert: this,
       titles: titles,
       jsonToModel: jsonToModel,
       none: none,

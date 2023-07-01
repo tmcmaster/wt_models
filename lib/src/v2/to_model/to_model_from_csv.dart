@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/v2/dsl/dsl.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
 mixin ToModelFromCsvV2<T extends BaseModelV2> {
@@ -16,7 +17,7 @@ mixin ToModelFromCsvV2<T extends BaseModelV2> {
   }
 
   T csvRowStringToModel(String csvRowString) {
-    final csvRowList = fromCsvString(csvRowString);
+    final csvRowList = Dsl.csvDecode(csvRowString);
     return csvRowList.isEmpty ? none : csvRowToModel(csvRowList[0]);
   }
 
@@ -30,7 +31,7 @@ mixin ToModelFromCsvV2<T extends BaseModelV2> {
 
   List<T> csvListStringToModeList(String csvString) {
     return csvRowListToModelList(
-      fromCsvString(csvString, eol: '\n').sublist(1),
+      Dsl.csvDecode(csvString, eol: '\n').sublist(1),
     );
   }
 

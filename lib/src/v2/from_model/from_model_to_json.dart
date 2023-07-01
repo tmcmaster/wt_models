@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:wt_models/src/v2/dsl/dsl.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 import 'package:wt_models/src/v2/support/json_support_v2.dart';
 
@@ -9,7 +10,7 @@ mixin FromModelToJsonV2<M extends JsonSupportV2> {
   }
 
   String jsonMapStringFromModel(M model) {
-    return toJsonString(jsonMapFromModel(model));
+    return Dsl.jsonEncode(jsonMapFromModel(model));
   }
 
   void jsonMapFileFromModel(M model, File file) {
@@ -21,7 +22,7 @@ mixin FromModelToJsonV2<M extends JsonSupportV2> {
   }
 
   String jsonMapListStringFromModelList(List<M> models) {
-    return toJsonString(jsonMapListFromModelList(models));
+    return Dsl.jsonEncode(jsonMapListFromModelList(models));
   }
 
   void jsonMapListFileFromModelList(List<M> models, File file) {

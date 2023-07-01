@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/v2/dsl/dsl.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
 mixin ToModelFromJsonV2<T extends BaseModelV2> {
@@ -16,7 +17,7 @@ mixin ToModelFromJsonV2<T extends BaseModelV2> {
   }
 
   T jsonMapStringToModel(String jsonMapString) {
-    return jsonMapToModel(fromJsonString(jsonMapString) as JsonMap);
+    return jsonMapToModel(Dsl.jsonDecode(jsonMapString) as JsonMap);
   }
 
   T jsonMapFileToModel(File file) {
@@ -28,7 +29,7 @@ mixin ToModelFromJsonV2<T extends BaseModelV2> {
   }
 
   List<T> jsonMapListString(String jsonMapListString) {
-    final List<JsonMap> jsonMapList = fromJsonString(jsonMapListString) as List<JsonMap>;
+    final List<JsonMap> jsonMapList = Dsl.jsonDecode(jsonMapListString) as List<JsonMap>;
     return jsonMapListToModelList(jsonMapList);
   }
 

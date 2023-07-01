@@ -12,7 +12,7 @@ mixin TypeSupport<T> {
 @freezed
 class Customer extends BaseModelV2<Customer> with _$Customer {
   static final convert = DslConvert<Customer>(
-    titles: ['id', 'name'],
+    titles: ['id', 'name', 'phone', 'email', 'address', 'postcode'],
     jsonToModel: Customer.fromJson,
     none: Customer.empty(),
   );
