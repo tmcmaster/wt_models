@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
-mixin DslTransformer<T, F> {
+mixin DslTransformerFrom<T, F> {
   T model(F from);
   JsonMap jsonMap(F from);
   String jsonMapString(F from);

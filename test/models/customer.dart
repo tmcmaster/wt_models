@@ -53,5 +53,5 @@ class Customer extends BaseModelV2<Customer> with _$Customer {
   String getTitle() => name;
 
   @override
-  List<String> getTitles() => convert.to.title();
+  List<String> getTitles() => convert.title();
 }

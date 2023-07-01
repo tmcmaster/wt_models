@@ -22,14 +22,15 @@ class DslTestData<T extends BaseModelV2<T>> {
     jsonMap = model.toJson();
     jsonMapString = Dsl.jsonEncode(jsonMap);
     jsonMapFile = File('test/test_data/$name.json');
-    csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.to.title());
+    csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.title());
+    csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.title());
     csvRowString = Dsl.csvEncode([
-      Customer.convert.to.title(),
+      Customer.convert.title(),
       csvRow,
     ]);
     csvRowFile = File('test/test_data/$name.csv');
     csvRowFileString = Dsl.csvEncode([
-      Customer.convert.to.title(),
+      Customer.convert.title(),
       csvRow,
     ]);
   }

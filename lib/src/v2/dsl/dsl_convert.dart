@@ -22,4 +22,6 @@ class DslConvert<T extends BaseModelV2<T>> {
     from = DslConvertFrom(_dsl);
     to = DslConvertTo(_dsl);
   }
+
+  List<String> title() => _dsl.titles;
 }

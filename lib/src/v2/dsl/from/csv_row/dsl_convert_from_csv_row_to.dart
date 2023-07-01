@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:wt_models/src/v2/base_model_v2.dart';
 import 'package:wt_models/src/v2/dsl/dsl.dart';
-import 'package:wt_models/src/v2/dsl/dsl_transformer.dart';
+import 'package:wt_models/src/v2/dsl/transforms/dsl_transformer_from.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
-class DslConvertFromCsvRowTo<T extends BaseModelV2<T>> with DslTransformer<T, CsvRow> {
+class DslConvertFromCsvRowTo<T extends BaseModelV2<T>> with DslTransformerFrom<T, CsvRow> {
   final Dsl<T> _dsl;
 
   DslConvertFromCsvRowTo(this._dsl);
