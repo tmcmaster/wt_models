@@ -8,7 +8,7 @@ import 'package:wt_models/src/v2/model_typedefs.dart';
 class DslConvertFromModelTo<T extends BaseModelV2<T>> with DslTransformer<T, T> {
   final Dsl<T> _dsl;
 
-  DslConvertFromModelTo(this._dsl);
+  const DslConvertFromModelTo(this._dsl);
 
   @override
   T model(T from) => from;

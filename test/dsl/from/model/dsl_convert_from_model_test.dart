@@ -2,8 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:wt_logging/wt_logging.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
-import '../dsl_test_data.dart';
-import '../models/customer.dart';
+import '../../../dsl_test_data.dart';
+import '../../../models/customer.dart';
 
 void main() {
   final log = logger('DSL Convert From Model Test', level: Level.debug);

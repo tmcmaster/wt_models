@@ -21,7 +21,7 @@ class Dsl<T extends BaseModelV2<T>> {
 
   static final jsonEncode = const JsonEncoder.withIndent('  ').convert;
   static final jsonDecode = const JsonDecoder().convert;
-  static final csvEncode = const ListToCsvConverter(delimitAllFields: true).convert;
+  static final csvEncode = const ListToCsvConverter(delimitAllFields: true, eol: '\n').convert;
   static final csvDecode = const CsvToListConverter(eol: '\n').convert;
 
   static void fileToString(File file) => file.readAsStringSync();
@@ -43,10 +43,10 @@ class Dsl<T extends BaseModelV2<T>> {
   }
 
   static CsvRow jsonMapToCsvRow(JsonMap jsonMap, List<dynamic> titles) {
-    return titles.map((title) => jsonMap[title]).toList();
+    return titles.map((title) => jsonMap[title].toString()).toList();
   }
 
-  static JsonMap csvRowJsonMap(JsonMap jsonMap, List<dynamic> titles) {
-    return {for (final title in titles) title.toString(): jsonMap[title]};
+  static JsonMap csvRowToJsonMap(CsvRow csvRow, List<String> titles) {
+    return {for (int i = 0; i < titles.length; i++) titles[i]: csvRow[i]};
   }
 }

@@ -23,7 +23,8 @@ class Customer extends BaseModelV2<Customer> with _$Customer {
     required String phone,
     required String email,
     required String address,
-    required int postcode,
+    // ignore: invalid_annotation_target
+    @JsonKey(fromJson: Customer.parsePostcode) required int postcode,
   }) = _Customer;
 
   Customer._();
@@ -38,6 +39,12 @@ class Customer extends BaseModelV2<Customer> with _$Customer {
         address: '',
         postcode: 0,
       );
+
+  static int parsePostcode(dynamic value) => value is int
+      ? value
+      : value is String
+          ? int.parse(value)
+          : 0;
 
   @override
   String getId() => id;

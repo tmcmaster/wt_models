@@ -22,13 +22,16 @@ class DslTestData<T extends BaseModelV2<T>> {
     jsonMap = model.toJson();
     jsonMapString = Dsl.jsonEncode(jsonMap);
     jsonMapFile = File('test/test_data/$name.json');
-    csvRow = model.getTitles().map((title) => '"${jsonMap[title] ?? ''}"').toList();
-    csvRowString = Dsl.csvEncode([csvRow]);
+    csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.to.title());
+    csvRowString = Dsl.csvEncode([
+      Customer.convert.to.title(),
+      csvRow,
+    ]);
     csvRowFile = File('test/test_data/$name.csv');
-    csvRowFileString = [
-      '"${Customer.convert.to.title().join('","')}"',
-      csvRowString,
-    ].join('\n');
+    csvRowFileString = Dsl.csvEncode([
+      Customer.convert.to.title(),
+      csvRow,
+    ]);
   }
 
   static DslTestData<Customer> customer() => DslTestData(

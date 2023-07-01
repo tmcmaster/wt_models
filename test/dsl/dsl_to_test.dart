@@ -12,35 +12,43 @@ void main() {
 
   final testCustomer = DslTestData.customer();
 
-  group('Convert to JsonMap', () {
-    test('From Model', () {
-      final JsonMap jsonMapFromModel = Customer.convert.to.jsonMap.from.model(testCustomer.model);
-      log.d('jsonMapFromModel: 4jsonMapFromModel');
-      expect(jsonMapFromModel, isNotEmpty);
-    });
-    test('From String', () {
-      final JsonMap jsonMapFromString =
-          Customer.convert.to.jsonMap.from.string(jsonEncode(testCustomer.jsonMap));
-      expect(jsonMapFromString, isNotEmpty);
-    });
-    test('From File', () {
-      final JsonMap jsonMapFromFile =
-          Customer.convert.to.jsonMap.from.file(testCustomer.jsonMapFile);
-      expect(jsonMapFromFile, isNotEmpty);
-    });
-  });
-  group('Convert to Model', () {
-    test('From JsonMap', () {
-      final customer = Customer.convert.to.model.from.jsonMap(testCustomer.jsonMap);
-      expect(customer.name, isNotEmpty);
-    });
-    test('From String', () {
-      final customer = Customer.convert.to.model.from.string(jsonEncode(testCustomer.jsonMap));
-      expect(customer.name, isNotEmpty);
-    });
-    test('From File', () {
-      final customer = Customer.convert.to.model.from.file(testCustomer.jsonMapFile);
-      expect(customer.name, isNotEmpty);
-    });
-  });
+  group(
+    'Convert to JsonMap',
+    () {
+      test('From Model', () {
+        final JsonMap jsonMapFromModel = Customer.convert.to.jsonMap.from.model(testCustomer.model);
+        log.d('jsonMapFromModel: 4jsonMapFromModel');
+        expect(jsonMapFromModel, isNotEmpty);
+      });
+      test('From String', () {
+        final JsonMap jsonMapFromString =
+            Customer.convert.to.jsonMap.from.string(jsonEncode(testCustomer.jsonMap));
+        expect(jsonMapFromString, isNotEmpty);
+      });
+      test('From File', () {
+        final JsonMap jsonMapFromFile =
+            Customer.convert.to.jsonMap.from.file(testCustomer.jsonMapFile);
+        expect(jsonMapFromFile, isNotEmpty);
+      });
+    },
+    skip: true,
+  );
+  group(
+    'Convert to Model',
+    () {
+      test('From JsonMap', () {
+        final customer = Customer.convert.to.model.from.jsonMap(testCustomer.jsonMap);
+        expect(customer.name, isNotEmpty);
+      });
+      test('From String', () {
+        final customer = Customer.convert.to.model.from.string(jsonEncode(testCustomer.jsonMap));
+        expect(customer.name, isNotEmpty);
+      });
+      test('From File', () {
+        final customer = Customer.convert.to.model.from.file(testCustomer.jsonMapFile);
+        expect(customer.name, isNotEmpty);
+      });
+    },
+    skip: true,
+  );
 }

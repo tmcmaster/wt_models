@@ -11,10 +11,7 @@ class DslConvertFromCsvRowStringTo<T extends BaseModelV2<T>> with DslTransformer
   DslConvertFromCsvRowStringTo(this._dsl);
 
   @override
-  CsvRow csvRow(String csvRowString) {
-    // TODO: implement csvRow
-    throw UnimplementedError();
-  }
+  CsvRow csvRow(String csvRowString) => Dsl.stringToCsvRow(csvRowString);
 
   @override
   void csvRowFile(String csvRowString, File outputCsvRowFile) {
@@ -22,31 +19,28 @@ class DslConvertFromCsvRowStringTo<T extends BaseModelV2<T>> with DslTransformer
   }
 
   @override
-  String csvRowString(String csvRowString) {
-    // TODO: implement csvRowString
-    throw UnimplementedError();
-  }
+  String csvRowString(String csvRowString) => csvRowString;
 
   @override
-  JsonMap jsonMap(String csvRowString) {
-    // TODO: implement jsonMap
-    throw UnimplementedError();
-  }
+  JsonMap jsonMap(String csvRowString) => Dsl.csvRowToJsonMap(
+        csvRow(csvRowString),
+        _dsl.titles,
+      );
 
   @override
   void jsonMapFile(String csvRowString, File outputJsonMapFile) {
-    // TODO: implement jsonMapFile
+    outputJsonMapFile.writeAsStringSync(
+      jsonMapString(csvRowString),
+    );
   }
 
   @override
-  String jsonMapString(String csvRowString) {
-    // TODO: implement jsonMapString
-    throw UnimplementedError();
-  }
+  String jsonMapString(String csvRowString) => Dsl.jsonEncode(
+        jsonMap(csvRowString),
+      );
 
   @override
-  T model(String csvRowString) {
-    // TODO: implement model
-    throw UnimplementedError();
-  }
+  T model(String csvRowString) => _dsl.jsonToModel(
+        jsonMap(csvRowString),
+      );
 }
