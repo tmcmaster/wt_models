@@ -5,7 +5,7 @@ import '../../../dsl_test_data.dart';
 import '../../../models/customer.dart';
 
 void main() {
-  final log = logger('DSL Convert From CsvRowString Test', level: Level.debug);
+  final log = logger('DSL Convert From CsvRowString Test', level: Level.warning);
 
   final testCustomer = DslTestData.customer();
   log.d('Testing data: ${testCustomer.model}');
