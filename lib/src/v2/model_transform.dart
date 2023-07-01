@@ -1,6 +1,6 @@
-import 'package:wt_models/wt_models_v2.dart';
+import 'package:wt_models/wt_models.dart';
 
-class ModelTransform<T extends BaseModelV2<T>> {
+class ModelTransform<T extends BaseModel<T>> {
   late FromModelToV2<T> to;
   late ToModelFromV2<T> from;
 

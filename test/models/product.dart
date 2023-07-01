@@ -1,13 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/order_support.dart';
-import 'package:wt_models/src/v2/base_model_v2.dart';
 import 'package:wt_models/src/v2/model_transform.dart';
 
 part 'product.freezed.dart';
 part 'product.g.dart';
 
 @freezed
-class Product extends BaseModelV2<Product> with _$Product, OrderSupport {
+class Product extends BaseModel<Product> with _$Product, OrderSupport {
   static final convert = ModelTransform<Product>(
     titles: ['id', 'title', 'order', 'price', 'weight'],
     jsonToModel: Product.fromJson,

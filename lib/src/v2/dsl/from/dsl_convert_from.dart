@@ -1,4 +1,4 @@
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/dsl/dsl.dart';
 import 'package:wt_models/src/v2/dsl/dsl_convert_to_something.dart';
 import 'package:wt_models/src/v2/dsl/from/csv_row/dsl_convert_from_csv_row_file_to.dart';
@@ -9,7 +9,7 @@ import 'package:wt_models/src/v2/dsl/from/json_map/dsl_convert_from_json_map_str
 import 'package:wt_models/src/v2/dsl/from/json_map/dsl_convert_from_json_map_to.dart';
 import 'package:wt_models/src/v2/dsl/from/model/dsl_convert_from_model_to.dart';
 
-class DslConvertFrom<T extends BaseModelV2<T>> {
+class DslConvertFrom<T extends BaseModel<T>> {
   final DslConvertToSomething<T, DslConvertFromModelTo<T>> model;
   final DslConvertToSomething<T, DslConvertFromJsonMapTo<T>> jsonMap;
   final DslConvertToSomething<T, DslConvertFromJsonMapStringTo<T>> jsonMapString;

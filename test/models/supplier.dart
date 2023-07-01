@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/model_transform.dart';
 
 part 'supplier.freezed.dart';
 part 'supplier.g.dart';
 
 @freezed
-class Supplier extends BaseModelV2<Supplier> with _$Supplier {
+class Supplier extends BaseModel<Supplier> with _$Supplier {
   static final convert = ModelTransform<Supplier>(
     titles: ['id', 'name'],
     jsonToModel: Supplier.fromJson,

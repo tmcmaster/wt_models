@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/model_transform.dart';
 
 import 'customer.dart';
@@ -10,7 +10,7 @@ part 'delivery.freezed.dart';
 part 'delivery.g.dart';
 
 @freezed
-class Delivery extends BaseModelV2<Delivery> with _$Delivery {
+class Delivery extends BaseModel<Delivery> with _$Delivery {
   static final convert = ModelTransform<Delivery>(
     titles: ['customer', 'driver', 'supplier'],
     jsonToModel: Delivery.fromJson,

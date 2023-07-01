@@ -1,10 +1,10 @@
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/dsl/dsl.dart';
 import 'package:wt_models/src/v2/dsl/from/dsl_convert_from.dart';
 import 'package:wt_models/src/v2/dsl/to/dsl_convert_to.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
-class DslConvert<T extends BaseModelV2<T>> {
+class DslConvert<T extends BaseModel<T>> {
   late Dsl<T> _dsl;
   late DslConvertFrom<T> from;
   late DslConvertTo<T> to;
@@ -23,5 +23,5 @@ class DslConvert<T extends BaseModelV2<T>> {
     to = DslConvertTo(_dsl);
   }
 
-  List<String> title() => _dsl.titles;
+  List<String> titles() => _dsl.titles;
 }

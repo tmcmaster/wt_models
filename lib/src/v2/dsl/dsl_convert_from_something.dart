@@ -1,7 +1,7 @@
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/dsl/dsl.dart';
 
-class DslConvertFromSomething<T extends BaseModelV2<T>, FROM> {
+class DslConvertFromSomething<T extends BaseModel<T>, FROM> {
   final Dsl<T> dsl;
   final FROM from;
   DslConvertFromSomething(this.dsl, this.from);

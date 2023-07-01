@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/model_transform.dart';
 
 part 'driver.freezed.dart';
 part 'driver.g.dart';
 
 @freezed
-class Driver extends BaseModelV2<Driver> with _$Driver {
+class Driver extends BaseModel<Driver> with _$Driver {
   static final convert = ModelTransform<Driver>(
     titles: ['id', 'name', 'phone'],
     jsonToModel: Driver.fromJson,

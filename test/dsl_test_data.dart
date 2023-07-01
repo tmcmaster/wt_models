@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/dsl/dsl.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
 import 'models/customer.dart';
 
-class DslTestData<T extends BaseModelV2<T>> {
+class DslTestData<T extends BaseModel<T>> {
   final T model;
   late String name;
   late JsonMap jsonMap;
@@ -22,15 +22,15 @@ class DslTestData<T extends BaseModelV2<T>> {
     jsonMap = model.toJson();
     jsonMapString = Dsl.jsonEncode(jsonMap);
     jsonMapFile = File('test/test_data/$name.json');
-    csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.title());
-    csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.title());
+    csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.titles());
+    csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.titles());
     csvRowString = Dsl.csvEncode([
-      Customer.convert.title(),
+      Customer.convert.titles(),
       csvRow,
     ]);
     csvRowFile = File('test/test_data/$name.csv');
     csvRowFileString = Dsl.csvEncode([
-      Customer.convert.title(),
+      Customer.convert.titles(),
       csvRow,
     ]);
   }

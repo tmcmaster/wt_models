@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/dsl/dsl_convert.dart';
 
 part 'customer.freezed.dart';
@@ -10,7 +10,7 @@ mixin TypeSupport<T> {
 }
 
 @freezed
-class Customer extends BaseModelV2<Customer> with _$Customer {
+class Customer extends BaseModel<Customer> with _$Customer {
   static final convert = DslConvert<Customer>(
     titles: ['id', 'name', 'phone', 'email', 'address', 'postcode'],
     jsonToModel: Customer.fromJson,
@@ -53,5 +53,5 @@ class Customer extends BaseModelV2<Customer> with _$Customer {
   String getTitle() => name;
 
   @override
-  List<String> getTitles() => convert.title();
+  List<String> getTitles() => convert.titles();
 }

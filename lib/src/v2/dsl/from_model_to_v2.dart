@@ -1,6 +1,6 @@
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 
-class FromModelToV2<T extends BaseModelV2> {
+class FromModelToV2<T extends BaseModel> {
   late List<String> _titles;
 
   FromModelToV2({

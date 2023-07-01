@@ -2,11 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:csv/csv.dart';
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/dsl/dsl_convert.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
-class Dsl<T extends BaseModelV2<T>> {
+class Dsl<T extends BaseModel<T>> {
   final DslConvert<T> convert;
   final List<String> titles;
   final T Function(JsonMap jsonMao) jsonToModel;

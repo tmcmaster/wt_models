@@ -8,7 +8,7 @@ ALL_FILES_TEST_FILE="test/all_files_import_test.dart";
 
 find lib -name '*.dart' |\
 grep -E -v '.*/*.g.dart|.*/*.freezed.dart|.*/*.mocks.dart|.*/models/*.dart|.*/models/.*/*.dart|.*/*_view.dart|.*/*_page.dart|.*/widgets/*.dart|.*/widgets/.*/*.dart|lib/apps/.*|lib/secrets/.*|lib/testing/.*|lib/common/lottie/.*' |\
-awk -F 'lib/' '{printf("import %spackage:wix_admin/%s%s;\n", "\"",$2,"\"")} END {print "void main() {}"}' \
+awk -F 'lib/' '{printf("import %spackage:wt_models/%s%s;\n", "\"",$2,"\"")} END {print "void main() {}"}' \
 > ${ALL_FILES_TEST_FILE}
 
 flutter test --coverage;

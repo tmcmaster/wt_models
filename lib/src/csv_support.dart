@@ -1,3 +1,3 @@
-mixin CsvSupportV2 {
+mixin CsvSupport {
   List<String> getTitles();
 }

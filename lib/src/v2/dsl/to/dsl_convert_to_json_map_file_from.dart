@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:wt_models/src/v2/base_model_v2.dart';
+import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/dsl/dsl.dart';
 import 'package:wt_models/src/v2/dsl/transforms/dsl_transformer_to_file.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
-class DslConvertToJsonMapFileFrom<T extends BaseModelV2<T>> with DslTransformerToFile<T, void> {
+class DslConvertToJsonMapFileFrom<T extends BaseModel<T>> with DslTransformerToFile<T, void> {
   final Dsl<T> dsl;
   DslConvertToJsonMapFileFrom(this.dsl);
 
