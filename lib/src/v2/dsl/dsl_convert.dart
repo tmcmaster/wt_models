@@ -24,4 +24,5 @@ class DslConvert<T extends BaseModel<T>> {
   }
 
   List<String> titles() => _dsl.titles;
+  T none() => _dsl.none;
 }
