@@ -14,16 +14,20 @@ class DslTestData<T extends BaseModel<T>> {
   late List<JsonMap> jsonMapList;
   late String jsonMapString;
   late String jsonMapListString;
-  late File jsonMapFile;
-  late File jsonMapListFile;
   late CsvRow csvRow;
   late List<CsvRow> csvRowList;
   late String csvRowString;
   late String csvRowListString;
-  late File csvRowFile;
-  late File csvRowListFile;
   late String csvRowFileString;
   late String csvRowListFileString;
+  late File csvRowFile;
+  late File csvRowListFile;
+  late File jsonMapFile;
+  late File jsonMapListFile;
+  late File outputCsvRowFile;
+  late File outputCsvRowListFile;
+  late File outputJsonMapFile;
+  late File outputJsonMapListFile;
 
   DslTestData(this.model) {
     modelList = [model];
@@ -32,8 +36,6 @@ class DslTestData<T extends BaseModel<T>> {
     jsonMapList = [jsonMap];
     jsonMapString = Dsl.jsonEncode(jsonMap);
     jsonMapListString = Dsl.jsonEncode(jsonMapList);
-    jsonMapFile = File('test/test_data/$name.json');
-    jsonMapListFile = File('test/test_data/${name}_list.json');
     csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.titles());
     csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.titles());
     csvRowList = [csvRow];
@@ -45,8 +47,6 @@ class DslTestData<T extends BaseModel<T>> {
       Customer.convert.titles(),
       ...csvRowList,
     ]);
-    csvRowFile = File('test/test_data/$name.csv');
-    csvRowListFile = File('test/test_data/${name}_list.csv');
     csvRowFileString = Dsl.csvEncode([
       Customer.convert.titles(),
       csvRow,
@@ -55,6 +55,15 @@ class DslTestData<T extends BaseModel<T>> {
       Customer.convert.titles(),
       ...csvRowList,
     ]);
+    csvRowFile = File('test/test_data/$name.csv');
+    csvRowListFile = File('test/test_data/${name}_list.csv');
+    jsonMapFile = File('test/test_data/$name.json');
+    jsonMapListFile = File('test/test_data/${name}_list.json');
+
+    outputCsvRowFile = File('test/test_data/output/$name.csv');
+    outputCsvRowListFile = File('test/test_data/output/${name}_list.csv');
+    outputJsonMapFile = File('test/test_data/output/$name.json');
+    outputJsonMapListFile = File('test/test_data/output/${name}_list.json');
   }
 
   static DslTestData<Customer> customer() => DslTestData(

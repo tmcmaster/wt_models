@@ -2,6 +2,7 @@ import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/dsl/dsl.dart';
 import 'package:wt_models/src/v2/dsl/dsl_convert_to_something.dart';
 import 'package:wt_models/src/v2/dsl/from/csv_row/dsl_convert_from_csv_row_file_to.dart';
+import 'package:wt_models/src/v2/dsl/from/csv_row/dsl_convert_from_csv_row_list_file_to.dart';
 import 'package:wt_models/src/v2/dsl/from/csv_row/dsl_convert_from_csv_row_list_to.dart';
 import 'package:wt_models/src/v2/dsl/from/csv_row/dsl_convert_from_csv_row_string_to.dart';
 import 'package:wt_models/src/v2/dsl/from/csv_row/dsl_convert_from_csv_row_to.dart';
@@ -23,6 +24,7 @@ class DslConvertFrom<T extends BaseModel<T>> {
   final DslConvertToSomething<T, DslConvertFromCsvRowListTo<T>> csvRowList;
   final DslConvertToSomething<T, DslConvertFromCsvRowStringTo<T>> csvRowString;
   final DslConvertToSomething<T, DslConvertFromCsvRowFileTo<T>> csvRowFile;
+  final DslConvertToSomething<T, DslConvertFromCsvRowListFileTo<T>> csvRowListFile;
   DslConvertFrom(Dsl<T> dsl)
       : model = DslConvertToSomething(dsl, DslConvertFromModelTo<T>(dsl)),
         jsonMap = DslConvertToSomething(dsl, DslConvertFromJsonMapTo<T>(dsl)),
@@ -33,5 +35,6 @@ class DslConvertFrom<T extends BaseModel<T>> {
         csvRow = DslConvertToSomething(dsl, DslConvertFromCsvRowTo<T>(dsl)),
         csvRowList = DslConvertToSomething(dsl, DslConvertFromCsvRowListTo<T>(dsl)),
         csvRowString = DslConvertToSomething(dsl, DslConvertFromCsvRowStringTo<T>(dsl)),
-        csvRowFile = DslConvertToSomething(dsl, DslConvertFromCsvRowFileTo<T>(dsl));
+        csvRowFile = DslConvertToSomething(dsl, DslConvertFromCsvRowFileTo<T>(dsl)),
+        csvRowListFile = DslConvertToSomething(dsl, DslConvertFromCsvRowListFileTo<T>(dsl));
 }
