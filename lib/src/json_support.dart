@@ -1,3 +1,3 @@
-abstract class JsonSupport {
+mixin JsonSupport {
   Map<String, dynamic> toJson();
 }
