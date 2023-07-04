@@ -22,6 +22,12 @@ class DslConvertToModelFrom<T extends BaseModel<T>> with DslTransformerTo<T, T> 
   T jsonMap(JsonMap jsonMap) => dsl.convert.from.jsonMap.to.model(jsonMap);
 
   @override
+  T dynamicMap(DynamicMap dynamicMap) => dsl.convert.from.dynamicMap.to.model(dynamicMap);
+
+  @override
+  T objectMap(ObjectMap objectMap) => dsl.convert.from.objectMap.to.model(objectMap);
+
+  @override
   T jsonMapFile(File jsonMapFile) => dsl.convert.from.jsonMapFile.to.model(jsonMapFile);
 
   @override

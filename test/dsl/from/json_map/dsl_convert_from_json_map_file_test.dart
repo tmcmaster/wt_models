@@ -20,6 +20,14 @@ void main() {
       final jsonMap = Customer.convert.from.jsonMapFile.to.jsonMap(testCustomer.jsonMapFile);
       expect(jsonMap, isNotEmpty);
     });
+    test('To DynamicMap', () {
+      final dynamicMap = Customer.convert.from.jsonMapFile.to.dynamicMap(testCustomer.jsonMapFile);
+      expect(dynamicMap, isNotEmpty);
+    });
+    test('To ObjectMap', () {
+      final objectMap = Customer.convert.from.jsonMapFile.to.objectMap(testCustomer.jsonMapFile);
+      expect(objectMap, isNotEmpty);
+    });
     test('To JsonMapString', () {
       final jsonMapString =
           Customer.convert.from.jsonMapFile.to.jsonMapString(testCustomer.jsonMapFile);

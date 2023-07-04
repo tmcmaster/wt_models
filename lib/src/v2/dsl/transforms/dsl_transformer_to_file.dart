@@ -5,6 +5,8 @@ import 'package:wt_models/src/v2/model_typedefs.dart';
 mixin DslTransformerToFile<T, TO> {
   TO model(T model, File outputFile);
   TO jsonMap(JsonMap jsonMap, File outputFile);
+  TO dynamicMap(DynamicMap dynamicMap, File outputFile);
+  TO objectMap(ObjectMap objectMap, File outputFile);
   TO jsonMapString(String jsonMapString, File outputFile);
   TO jsonMapFile(File jsonMapFile, File outputFile);
   TO csvRow(CsvRow csvRow, File outputFile);

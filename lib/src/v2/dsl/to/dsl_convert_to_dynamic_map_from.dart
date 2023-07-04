@@ -5,9 +5,9 @@ import 'package:wt_models/src/v2/dsl/dsl.dart';
 import 'package:wt_models/src/v2/dsl/transforms/dsl_transformer_to.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
-class DslConvertToJsonMapFrom<T extends BaseModel<T>> with DslTransformerTo<T, JsonMap> {
+class DslConvertToDynamicMapFrom<T extends BaseModel<T>> with DslTransformerTo<T, JsonMap> {
   final Dsl<T> dsl;
-  DslConvertToJsonMapFrom(this.dsl);
+  DslConvertToDynamicMapFrom(this.dsl);
 
   @override
   JsonMap csvRow(CsvRow csvRow) => dsl.convert.from.csvRow.to.jsonMap(csvRow);

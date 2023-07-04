@@ -19,6 +19,14 @@ void main() {
       final jsonMapString = Customer.convert.to.jsonMapString.from.jsonMap(testCustomer.jsonMap);
       expect(jsonMapString.contains(testCustomer.model.name), isTrue);
     });
+    test('From DynamicMap', () {
+      final jsonMapString = Customer.convert.to.jsonMapString.from.dynamicMap(testCustomer.jsonMap);
+      expect(jsonMapString.contains(testCustomer.model.name), isTrue);
+    });
+    test('From ObjectMap', () {
+      final jsonMapString = Customer.convert.to.jsonMapString.from.objectMap(testCustomer.jsonMap);
+      expect(jsonMapString.contains(testCustomer.model.name), isTrue);
+    });
     test('From JsonMapString', () {
       final jsonMapString =
           Customer.convert.to.jsonMapString.from.jsonMapString(testCustomer.jsonMapString);

@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wt_logging/wt_logging.dart';
-import 'package:wt_models/src/v2/model_typedefs.dart';
 
 import '../../../dsl_test_data.dart';
 import '../../../models/customer.dart';
@@ -17,8 +16,16 @@ void main() {
       expect(customer.name, isNotEmpty);
     });
     test('To JsonMap', () {
-      final JsonMap jsonMap = Customer.convert.from.jsonMap.to.jsonMap(testCustomer.jsonMap);
+      final jsonMap = Customer.convert.from.jsonMap.to.jsonMap(testCustomer.jsonMap);
       expect(jsonMap, equals(testCustomer.jsonMap));
+    });
+    test('To DynamicMap', () {
+      final dynamicMao = Customer.convert.from.jsonMap.to.dynamicMap(testCustomer.jsonMap);
+      expect(dynamicMao, equals(testCustomer.jsonMap));
+    });
+    test('To ObjectMap', () {
+      final objectMap = Customer.convert.from.jsonMap.to.objectMap(testCustomer.jsonMap);
+      expect(objectMap, equals(testCustomer.jsonMap));
     });
     test('To JsonMapString', () {
       final String jsonMapString =

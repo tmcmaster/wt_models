@@ -28,6 +28,12 @@ class DslConvertFromCsvRowStringTo<T extends BaseModel<T>> with DslTransformerFr
       );
 
   @override
+  DynamicMap dynamicMap(String from) => jsonMap(from);
+
+  @override
+  ObjectMap objectMap(String from) => jsonMap(from);
+
+  @override
   void jsonMapFile(String csvRowString, File outputJsonMapFile) {
     outputJsonMapFile.writeAsStringSync(
       jsonMapString(csvRowString),

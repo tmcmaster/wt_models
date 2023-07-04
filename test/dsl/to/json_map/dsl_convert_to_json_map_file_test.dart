@@ -17,6 +17,14 @@ void main() {
     test('From JsonMap', () {
       Customer.convert.to.jsonMapFile.from.jsonMap(testCustomer.jsonMap, testCustomer.jsonMapFile);
     });
+    test('From Dynamic', () {
+      Customer.convert.to.jsonMapFile.from
+          .dynamicMap(testCustomer.jsonMap, testCustomer.jsonMapFile);
+    });
+    test('From ObjectMap', () {
+      Customer.convert.to.jsonMapFile.from
+          .objectMap(testCustomer.jsonMap, testCustomer.jsonMapFile);
+    });
     test('From JsonMapString', () {
       Customer.convert.to.jsonMapFile.from
           .jsonMapString(testCustomer.jsonMapString, testCustomer.jsonMapFile);

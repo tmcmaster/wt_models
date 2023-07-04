@@ -26,6 +26,16 @@ class DslConvertToJsonMapFileFrom<T extends BaseModel<T>> with DslTransformerToF
       dsl.convert.from.jsonMap.to.jsonMapFile(jsonMap, outputFile);
 
   @override
+  void dynamicMap(DynamicMap dynamicMap, File outputFile) {
+    jsonMap({for (final e in dynamicMap.entries) e.key.toString(): e.value}, outputFile);
+  }
+
+  @override
+  void objectMap(ObjectMap objectMap, File outputFile) {
+    jsonMap({for (final e in objectMap.entries) e.key.toString(): e.value}, outputFile);
+  }
+
+  @override
   void jsonMapFile(File jsonMapFile, File outputFile) =>
       dsl.convert.from.jsonMapFile.to.jsonMapFile(jsonMapFile, outputFile);
 

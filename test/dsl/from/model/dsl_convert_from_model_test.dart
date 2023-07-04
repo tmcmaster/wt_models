@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:wt_logging/wt_logging.dart';
-import 'package:wt_models/src/v2/model_typedefs.dart';
 
 import '../../../dsl_test_data.dart';
 import '../../../models/customer.dart';
@@ -17,13 +16,20 @@ void main() {
       expect(customer, equals(testCustomer.model));
     });
     test('To JsonMap', () {
-      final JsonMap customerJsonMap = Customer.convert.from.model.to.jsonMap(testCustomer.model);
-      expect(customerJsonMap, isNotEmpty);
+      final jsonMap = Customer.convert.from.model.to.jsonMap(testCustomer.model);
+      expect(jsonMap, isNotEmpty);
+    });
+    test('To DynamicMap', () {
+      final dynamicMap = Customer.convert.from.model.to.dynamicMap(testCustomer.model);
+      expect(dynamicMap, isNotEmpty);
+    });
+    test('To ObjectMap', () {
+      final objectMap = Customer.convert.from.model.to.objectMap(testCustomer.model);
+      expect(objectMap, isNotEmpty);
     });
     test('To JsonMapString', () {
-      final String customerJsonMapString =
-          Customer.convert.from.model.to.jsonMapString(testCustomer.model);
-      expect(customerJsonMapString, isNotEmpty);
+      final String jsonMapString = Customer.convert.from.model.to.jsonMapString(testCustomer.model);
+      expect(jsonMapString, isNotEmpty);
     });
     test('To JsonMapFile', () {
       Customer.convert.from.model.to.jsonMapFile(testCustomer.model, testCustomer.jsonMapFile);

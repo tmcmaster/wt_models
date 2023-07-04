@@ -34,6 +34,12 @@ class DslConvertFromJsonMapFileTo<T extends BaseModel<T>> with DslTransformerFro
       );
 
   @override
+  DynamicMap dynamicMap(File from) => jsonMap(from);
+
+  @override
+  ObjectMap objectMap(File from) => jsonMap(from);
+
+  @override
   void jsonMapFile(File jsonMapFile, File outputJsonMapFile) {}
 
   @override

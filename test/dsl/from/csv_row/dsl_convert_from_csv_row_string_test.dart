@@ -19,6 +19,15 @@ void main() {
       final jsonMap = Customer.convert.from.csvRowString.to.jsonMap(testCustomer.csvRowString);
       expect(jsonMap.length, testCustomer.csvRow.length);
     });
+    test('To DynammicMap', () {
+      final dynamicMap =
+          Customer.convert.from.csvRowString.to.dynamicMap(testCustomer.csvRowString);
+      expect(dynamicMap.length, testCustomer.csvRow.length);
+    });
+    test('To ObjectMap', () {
+      final objectMap = Customer.convert.from.csvRowString.to.objectMap(testCustomer.csvRowString);
+      expect(objectMap.length, testCustomer.csvRow.length);
+    });
     test('To JsonMapString', () {
       final jsonMapString =
           Customer.convert.from.csvRowString.to.jsonMapString(testCustomer.csvRowString);

@@ -19,6 +19,12 @@ class DslConvertFromJsonMapStringTo<T extends BaseModel<T>> with DslTransformerF
   JsonMap jsonMap(String jsonMapString) => Dsl.jsonDecode(jsonMapString) as JsonMap;
 
   @override
+  DynamicMap dynamicMap(String from) => jsonMap(from);
+
+  @override
+  ObjectMap objectMap(String from) => jsonMap(from);
+
+  @override
   String jsonMapString(String from) => from;
 
   @override
