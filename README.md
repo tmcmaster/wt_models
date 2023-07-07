@@ -42,26 +42,48 @@ class ContactDetails extends BaseModel<ContactDetails> with _$ContactDetails {
   @override
   List<String> getTitles() => convert.titles();
 }
-
 ```
 
+## Setup some test data
+
+```dart
+File outputDirPath = 'tmp/output';
+File jsonFile = File('$outputDirPath/jsonMap.json');
+File jsonListFile = File('$outputDirPath/jsonMapList.json');
+File csvRowFile = File('$outputDirPath/csvRow.csv');
+File csvRowListFile = File('$outputDirPath/csvRowListList.csv');
+
+static final contactDetails = ContactDetails(
+    name: 'Person One',
+    address: '1 there street, somewhere',
+    phone: '1111 111 111',
+    email: 'persoon@one.id.au',
+);
+static final contactDetailsList = [contactDetails];
+
+
+```
 ## Model -> Data Types
 
 Example of converting from a model to other formats
 
 
 ```dart
-    JsonMap jsonMap = ContactDetails.convert.from.model.to.jsonMap(contactDetails);
+void main() {
+  JsonMap jsonMap = ContactDetails.convert.from.model.to.jsonMap(contactDetails);
 
-    String jsonMapString = ContactDetails.convert.from.model.to.jsonMapString(contactDetails);
+  String jsonMapString = ContactDetails.convert.from.model.to.jsonMapString(contactDetails);
 
-    ContactDetails.convert.from.model.to.jsonMapFile(contactDetails, jsonFile);
+  ContactDetails.convert.from.model.to.jsonMapFile(contactDetails, jsonFile);
 
-    List<JsonMap> jsonMapList = ContactDetails.convert.from.modelList.to.jsonMapList(contactDetailsList);
+  List<JsonMap> jsonMapList = ContactDetails.convert.from.modelList.to.jsonMapList(
+      contactDetailsList);
 
-    String jsonMapListString = ContactDetails.convert.from.modelList.to.jsonMapListString(contactDetailsList);
+  String jsonMapListString = ContactDetails.convert.from.modelList.to.jsonMapListString(
+      contactDetailsList);
 
-    ContactDetails.convert.from.modelList.to.jsonMapListFile(contactDetailsList, jsonListFile);
+  ContactDetails.convert.from.modelList.to.jsonMapListFile(contactDetailsList, jsonListFile);
+}
 ```
 
 
@@ -70,16 +92,17 @@ Example of converting from a model to other formats
 Example of converting from data types to a model.
 
 ```dart
+void main() {
     CsvRow csvRow = ContactDetails.convert.from.model.to.csvRow(contactDetails);
 
     String csvMapString = ContactDetails.convert.from.model.to.csvRowString(contactDetails);
-
+    
     ContactDetails.convert.from.model.to.csvRowFile(contactDetails, csvRowFile);
-
+    
     List<CsvRow> csvRowList = ContactDetails.convert.from.modelList.to.csvRowList(contactDetailsList);
-
+    
     String csvRowListString = ContactDetails.convert.from.modelList.to.csvRowListString(contactDetailsList);
-
+    
     ContactDetails.convert.from.modelList.to.csvRowListFile(contactDetailsList, csvRowListFile);
-
+}
 ```
