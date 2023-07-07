@@ -7,7 +7,13 @@ This is an example of a Freezed model class, that has been augmented with the wt
 
 ```dart
 @freezed
-class ContactDetails with _$ContactDetails, JsonSupport {
+class ContactDetails extends BaseModel<ContactDetails> with _$ContactDetails {
+  static final convert = DslConvert<ContactDetails>(
+    titles: ['name', 'address', 'phone', 'email'],
+    jsonToModel: ContactDetails.fromJson,
+    none: ContactDetails.empty(),
+  );
+
   factory ContactDetails({
     required String name,
     required String address,
@@ -16,36 +22,64 @@ class ContactDetails with _$ContactDetails, JsonSupport {
     String? placeId,
   }) = _ContactDetails;
 
-  static final List<String> titles = ['name', 'address', 'phone', 'email'];
-
   ContactDetails._();
 
-  static final from = ToModelFrom<ContactDetails>(json: _$ContactDetailsFromJson, titles: titles);
-  static final to = FromModelTo<ContactDetails>(titles: titles);
-
   factory ContactDetails.fromJson(Map<String, dynamic> json) => _$ContactDetailsFromJson(json);
+
+  factory ContactDetails.empty() => ContactDetails(
+        name: '',
+        address: '',
+        phone: '',
+        email: '',
+      );
+
+  @override
+  String getId() => email;
+
+  @override
+  String getTitle() => name;
+
+  @override
+  List<String> getTitles() => convert.titles();
 }
+
 ```
 
-## The FromModelTo class
+## Model -> Data Types
 
-The FromModelTo class contains transforms for converting models into different formats.
-Some example of using the library:
+Example of converting from a model to other formats
+
 
 ```dart
-    String jsonMap = ContactDetails.to.jsonStringFromMode(contactDetails);
-    Map<String, dynamic> jsonData = ContactDetails.to.jsonFromModel(contactDetails);
-    List<Map<String, dynamic>> jsonListOfMaps = ContactDetails.to.jsonListFromModelList([contactDetails]);
-    List<List<dynamic>> csvList = ContactDetails.to.csvListModelList([contactDetails]);
+    JsonMap jsonMap = ContactDetails.convert.from.model.to.jsonMap(contactDetails);
+
+    String jsonMapString = ContactDetails.convert.from.model.to.jsonMapString(contactDetails);
+
+    ContactDetails.convert.from.model.to.jsonMapFile(contactDetails, jsonFile);
+
+    List<JsonMap> jsonMapList = ContactDetails.convert.from.modelList.to.jsonMapList(contactDetailsList);
+
+    String jsonMapListString = ContactDetails.convert.from.modelList.to.jsonMapListString(contactDetailsList);
+
+    ContactDetails.convert.from.modelList.to.jsonMapListFile(contactDetailsList, jsonListFile);
 ```
 
-## The ToModelFrom class
 
-The ToModelFrom class contains transforms for converting from different formats, into model objects.
-Some example of using the library:
+## Data Types -> Model
+
+Example of converting from data types to a model.
+
 ```dart
-    ContactDetails fromJsonString = ContactDetails.from.fromJsonString(jsonMapString);
-    ContactDetails fromJsonData = ContactDetails.from.fromJson(jsonData);
-    List<ContactDetails> fromListOfJsonMaps = ContactDetails.from.jsonListToModelList(jsonListOfMaps);
-    List<ContactDetails> fromCsvData = ContactDetails.from.csvListToModelList(csvData);
+    CsvRow csvRow = ContactDetails.convert.from.model.to.csvRow(contactDetails);
+
+    String csvMapString = ContactDetails.convert.from.model.to.csvRowString(contactDetails);
+
+    ContactDetails.convert.from.model.to.csvRowFile(contactDetails, csvRowFile);
+
+    List<CsvRow> csvRowList = ContactDetails.convert.from.modelList.to.csvRowList(contactDetailsList);
+
+    String csvRowListString = ContactDetails.convert.from.modelList.to.csvRowListString(contactDetailsList);
+
+    ContactDetails.convert.from.modelList.to.csvRowListFile(contactDetailsList, csvRowListFile);
+
 ```

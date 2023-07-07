@@ -5,7 +5,13 @@ part 'contact_details.freezed.dart';
 part 'contact_details.g.dart';
 
 @freezed
-class ContactDetails extends IdJsonSupport<ContactDetails> with _$ContactDetails {
+class ContactDetails extends BaseModel<ContactDetails> with _$ContactDetails {
+  static final convert = DslConvert<ContactDetails>(
+    titles: ['name', 'address', 'phone', 'email'],
+    jsonToModel: ContactDetails.fromJson,
+    none: ContactDetails.empty(),
+  );
+
   factory ContactDetails({
     required String name,
     required String address,
@@ -14,15 +20,23 @@ class ContactDetails extends IdJsonSupport<ContactDetails> with _$ContactDetails
     String? placeId,
   }) = _ContactDetails;
 
-  static final List<String> titles = ['name', 'address', 'phone', 'email'];
-
   ContactDetails._();
-
-  static final from = ToModelFrom<ContactDetails>(json: _$ContactDetailsFromJson, titles: titles);
-  static final to = FromModelTo<ContactDetails>(titles: titles);
 
   factory ContactDetails.fromJson(Map<String, dynamic> json) => _$ContactDetailsFromJson(json);
 
+  factory ContactDetails.empty() => ContactDetails(
+        name: '',
+        address: '',
+        phone: '',
+        email: '',
+      );
+
   @override
-  String getId() => name;
+  String getId() => email;
+
+  @override
+  String getTitle() => name;
+
+  @override
+  List<String> getTitles() => convert.titles();
 }
