@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:csv/csv.dart';
 import 'package:wt_models/src/base_model.dart';
 import 'package:wt_models/src/v2/dsl/dsl_convert.dart';
+import 'package:wt_models/src/v2/firebase_transformer.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
 class Dsl<T extends BaseModel<T>> {
@@ -23,6 +24,13 @@ class Dsl<T extends BaseModel<T>> {
   static final jsonDecode = const JsonDecoder().convert;
   static final csvEncode = const ListToCsvConverter(delimitAllFields: true, eol: '\n').convert;
   static final csvDecode = const CsvToListConverter(eol: '\n').convert;
+
+  static JsonMap firebaseMapDecoder(Map<Object?, Object?> map) =>
+      FirebaseTransformer.convertSnapshotMap(map);
+  static JsonMap firebaseMapEncoder(JsonMap map) => map;
+
+  static List firebaseListDecoder<T>(List list) => FirebaseTransformer.convertList(list);
+  static List firebaseListEncoder(List list) => list;
 
   static void fileToString(File file) => file.readAsStringSync();
 
