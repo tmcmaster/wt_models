@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:wt_models/src/base_model.dart';
-import 'package:wt_models/src/v2/dsl/dsl.dart';
+import 'package:wt_models/src/v2/dsl/transforms/dsl/dsl.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
 import 'models/customer.dart';

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:wt_models/src/base_model.dart';
-import 'package:wt_models/src/v2/dsl/dsl_convert.dart';
+import 'package:wt_models/src/v2/dsl/transforms/dsl/dsl_convert.dart';
 
 part 'customer.freezed.dart';
 part 'customer.g.dart';

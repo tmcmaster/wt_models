@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
-mixin DslTransformerToFile<T, TO> {
+mixin DslTransformerFileTo<T, TO> {
   TO model(T model, File outputFile);
   TO jsonMap(JsonMap jsonMap, File outputFile);
   TO dynamicMap(DynamicMap dynamicMap, File outputFile);

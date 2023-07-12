@@ -63,46 +63,82 @@ static final contactDetailsList = [contactDetails];
 
 
 ```
-## Model -> Data Types
+## Model -> JSON Formats
 
-Example of converting from a model to other formats
+Example of converting to and from a model and JSON formats
 
 
 ```dart
 void main() {
-  JsonMap jsonMap = ContactDetails.convert.from.model.to.jsonMap(contactDetails);
+  final JsonMap jsonMap = ContactDetails.convert.from.model.to.jsonMap(contactDetails);
+  final ContactDetails modelFromJsonMap = ContactDetails.convert.to.model.from.jsonMap(jsonMap);
+  log.d('JsonMap: $jsonMap, Model: $modelFromJsonMap');
 
-  String jsonMapString = ContactDetails.convert.from.model.to.jsonMapString(contactDetails);
+  final String jsonMapString = ContactDetails.convert.from.model.to.jsonMapString(contactDetails);
+  final ContactDetails modelFromJsonMapString =
+  ContactDetails.convert.to.model.from.jsonMapString(jsonMapString);
+  log.d('JsonMapString: $jsonMapString, Model: $modelFromJsonMapString');
 
   ContactDetails.convert.from.model.to.jsonMapFile(contactDetails, jsonFile);
+  final ContactDetails modelFromJsonMapFile =
+  ContactDetails.convert.to.model.from.jsonMapFile(jsonFile);
+  log.d('jsonMapFile: Model: $modelFromJsonMapFile');
 
-  List<JsonMap> jsonMapList = ContactDetails.convert.from.modelList.to.jsonMapList(
-      contactDetailsList);
+  final List<JsonMap> jsonMapList =
+  ContactDetails.convert.from.modelList.to.jsonMapList(contactDetailsList);
+  final List<ContactDetails> modelListFromJsonMapList =
+  ContactDetails.convert.to.modelList.from.jsonMapList(jsonMapList);
+  log.d('JsonMapList: $jsonMapList, Model List: $modelListFromJsonMapList');
 
-  String jsonMapListString = ContactDetails.convert.from.modelList.to.jsonMapListString(
-      contactDetailsList);
+  final String jsonMapListString =
+  ContactDetails.convert.from.modelList.to.jsonMapListString(contactDetailsList);
+  final List<ContactDetails> modelListFromJsonMapListString =
+  ContactDetails.convert.to.modelList.from.jsonMapListString(jsonMapListString);
+  log.d('JsonMapListString: $jsonMapListString, Model List: $modelListFromJsonMapListString');
 
   ContactDetails.convert.from.modelList.to.jsonMapListFile(contactDetailsList, jsonListFile);
+  final List<ContactDetails> modelListFromJsonMapListFile =
+  ContactDetails.convert.to.modelList.from.jsonMapListFile(jsonListFile);
+  log.d('jsonMapListFile: Model List: $modelListFromJsonMapListFile');
 }
 ```
 
 
-## Data Types -> Model
+## Model -> CSV Formats
 
-Example of converting from data types to a model.
+Example of converting to and from a model and CSV formats
 
 ```dart
 void main() {
-    CsvRow csvRow = ContactDetails.convert.from.model.to.csvRow(contactDetails);
+  final CsvRow csvRow = ContactDetails.convert.from.model.to.csvRow(contactDetails);
+  final ContactDetails modelFromCsvRow = ContactDetails.convert.to.model.from.csvRow(csvRow);
+  log.d('CsvRow: $csvRow, Model: $modelFromCsvRow');
 
-    String csvMapString = ContactDetails.convert.from.model.to.csvRowString(contactDetails);
-    
-    ContactDetails.convert.from.model.to.csvRowFile(contactDetails, csvRowFile);
-    
-    List<CsvRow> csvRowList = ContactDetails.convert.from.modelList.to.csvRowList(contactDetailsList);
-    
-    String csvRowListString = ContactDetails.convert.from.modelList.to.csvRowListString(contactDetailsList);
-    
-    ContactDetails.convert.from.modelList.to.csvRowListFile(contactDetailsList, csvRowListFile);
+  final String csvRowString = ContactDetails.convert.from.model.to.csvRowString(contactDetails);
+  final ContactDetails modelFromCsvRowString =
+  ContactDetails.convert.to.model.from.csvRowString(csvRowString);
+  log.d('CsvRowString: $csvRowString, Model: $modelFromCsvRowString');
+
+  ContactDetails.convert.from.model.to.csvRowFile(contactDetails, csvRowFile);
+  final ContactDetails modelFromCsvRowFile =
+  ContactDetails.convert.to.model.from.csvRowFile(csvRowFile);
+  log.d('csvRowFile: Model: $modelFromCsvRowFile');
+
+  final List<CsvRow> csvRowList =
+  ContactDetails.convert.from.modelList.to.csvRowList(contactDetailsList);
+  final List<ContactDetails> modelListFromCsvRowList =
+  ContactDetails.convert.to.modelList.from.csvRowList(csvRowList);
+  log.d('CsvRowList: $csvRowList, Model List: $modelListFromCsvRowList');
+
+  final String csvRowListString =
+  ContactDetails.convert.from.modelList.to.csvRowListString(contactDetailsList);
+  final List<ContactDetails> modelListFromCsvRowListString =
+  ContactDetails.convert.to.modelList.from.csvRowListString(csvRowListString);
+  log.d('CsvRowListString: $csvRowListString, Model List: $modelListFromCsvRowListString');
+
+  ContactDetails.convert.from.modelList.to.csvRowListFile(contactDetailsList, csvRowListFile);
+  final List<ContactDetails> modelListFromCsvRowListFile =
+  ContactDetails.convert.to.modelList.from.csvRowListFile(csvRowFile);
+  log.d('csvRowListFile: Model List: $modelListFromCsvRowListFile');
 }
 ```

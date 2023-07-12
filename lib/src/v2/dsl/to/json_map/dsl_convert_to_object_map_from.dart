@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:wt_models/src/base_model.dart';
-import 'package:wt_models/src/v2/dsl/dsl.dart';
-import 'package:wt_models/src/v2/dsl/transforms/dsl_transformer_to.dart';
+import 'package:wt_models/src/v2/dsl/transforms/dsl/dsl.dart';
+import 'package:wt_models/src/v2/dsl/transforms/to/dsl_transformer_to.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
 class DslConvertToObjectMapFrom<T extends BaseModel<T>> with DslTransformerTo<T, ObjectMap> {
