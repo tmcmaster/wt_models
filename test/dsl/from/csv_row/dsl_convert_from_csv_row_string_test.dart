@@ -12,33 +12,34 @@ void main() {
 
   group('Convert from CsvRowString', () {
     test('To Model', () {
-      final model = Customer.convert.from.csvRowString.to.model(testCustomer.csvRowString);
+      final model = Customer.convert.from.csvRowString.to.model(testCustomer.csvRowListString);
       expect(model.name, testCustomer.model.name);
     });
     test('To JsonMap', () {
-      final jsonMap = Customer.convert.from.csvRowString.to.jsonMap(testCustomer.csvRowString);
+      final jsonMap = Customer.convert.from.csvRowString.to.jsonMap(testCustomer.csvRowListString);
       expect(jsonMap.length, testCustomer.csvRow.length);
     });
     test('To DynammicMap', () {
       final dynamicMap =
-          Customer.convert.from.csvRowString.to.dynamicMap(testCustomer.csvRowString);
+          Customer.convert.from.csvRowString.to.dynamicMap(testCustomer.csvRowListString);
       expect(dynamicMap.length, testCustomer.csvRow.length);
     });
     test('To ObjectMap', () {
-      final objectMap = Customer.convert.from.csvRowString.to.objectMap(testCustomer.csvRowString);
+      final objectMap =
+          Customer.convert.from.csvRowString.to.objectMap(testCustomer.csvRowListString);
       expect(objectMap.length, testCustomer.csvRow.length);
     });
     test('To JsonMapString', () {
       final jsonMapString =
-          Customer.convert.from.csvRowString.to.jsonMapString(testCustomer.csvRowString);
+          Customer.convert.from.csvRowString.to.jsonMapString(testCustomer.csvRowListString);
       expect(jsonMapString.contains(testCustomer.model.name), isTrue);
     });
     test('To JsonMapFile', () {
       Customer.convert.from.csvRowString.to
-          .jsonMapFile(testCustomer.csvRowString, testCustomer.jsonMapFile);
+          .jsonMapFile(testCustomer.csvRowListString, testCustomer.outputJsonMapFile);
     });
     test('To CsvRow', () {
-      final csvRow = Customer.convert.from.csvRowString.to.csvRow(testCustomer.csvRowString);
+      final csvRow = Customer.convert.from.csvRowString.to.csvRow(testCustomer.csvRowListString);
       expect(csvRow, testCustomer.csvRow);
     });
     test('To CsvRowString', () {
@@ -48,7 +49,7 @@ void main() {
     });
     test('To CsvRowFile', () {
       Customer.convert.from.csvRowString.to
-          .csvRowFile(testCustomer.csvRowString, testCustomer.csvRowFile);
+          .csvRowFile(testCustomer.csvRowString, testCustomer.outputCsvRowFile);
     });
   });
 }

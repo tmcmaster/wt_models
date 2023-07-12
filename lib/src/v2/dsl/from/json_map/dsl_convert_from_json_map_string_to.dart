@@ -40,6 +40,7 @@ class DslConvertFromJsonMapStringTo<T extends BaseModel<T>> with DslTransformerF
 
   @override
   String csvRowString(String jsonMapString) => Dsl.csvEncode([
+        _dsl.titles,
         csvRow(jsonMapString),
       ]);
 

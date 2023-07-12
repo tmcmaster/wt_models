@@ -37,7 +37,7 @@ void main() {
     });
     test('To JsonMapFile', () {
       Customer.convert.from.jsonMapString.to
-          .jsonMapFile(testCustomer.jsonMapString, testCustomer.jsonMapFile);
+          .jsonMapFile(testCustomer.jsonMapString, testCustomer.outputJsonMapFile);
     });
     test('To CsvRow', () {
       final csvRow = Customer.convert.from.jsonMapString.to.csvRow(testCustomer.jsonMapString);
@@ -50,7 +50,7 @@ void main() {
     });
     test('To CsvRowFile', () {
       Customer.convert.from.jsonMapString.to
-          .csvRowFile(testCustomer.jsonMapString, testCustomer.csvRowFile);
+          .csvRowFile(testCustomer.jsonMapString, testCustomer.outputCsvRowFile);
     });
   });
 }

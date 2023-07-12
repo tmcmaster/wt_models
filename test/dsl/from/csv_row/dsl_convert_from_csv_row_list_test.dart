@@ -36,7 +36,7 @@ void main() {
     });
     test('To JsonMapListFile', () {
       Customer.convert.from.csvRowList.to
-          .jsonMapListFile(testCustomer.csvRowList, testCustomer.jsonMapListFile);
+          .jsonMapListFile(testCustomer.csvRowList, testCustomer.outputJsonMapListFile);
     });
     test('To CsvRowList', () {
       final csvRowList = Customer.convert.from.csvRowList.to.csvRowList(testCustomer.csvRowList);
@@ -49,7 +49,7 @@ void main() {
     });
     test('To CsvRowListFile', () {
       Customer.convert.from.csvRowList.to
-          .csvRowListFile(testCustomer.csvRowList, testCustomer.csvRowFile);
+          .csvRowListFile(testCustomer.csvRowList, testCustomer.outputCsvRowFile);
     });
   });
 }

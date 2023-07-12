@@ -15,11 +15,10 @@ class DslTestData<T extends BaseModel<T>> {
   late String jsonMapString;
   late String jsonMapListString;
   late CsvRow csvRow;
-  late List<CsvRow> csvRowList;
   late String csvRowString;
+  late List<CsvRow> csvRowList;
+  late List<CsvRow> csvRowListWithTitles;
   late String csvRowListString;
-  late String csvRowFileString;
-  late String csvRowListFileString;
   late File csvRowFile;
   late File csvRowListFile;
   late File jsonMapFile;
@@ -32,29 +31,18 @@ class DslTestData<T extends BaseModel<T>> {
   DslTestData(this.model) {
     modelList = [model];
     name = model.getType().toString().toLowerCase();
+
     jsonMap = model.toJson();
     jsonMapList = [jsonMap];
     jsonMapString = Dsl.jsonEncode(jsonMap);
     jsonMapListString = Dsl.jsonEncode(jsonMapList);
+
     csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.titles());
-    csvRow = Dsl.jsonMapToCsvRow(jsonMap, Customer.convert.titles());
+    csvRowString = Dsl.csvEncode([csvRow]);
     csvRowList = [csvRow];
-    csvRowString = Dsl.csvEncode([
-      Customer.convert.titles(),
-      csvRow,
-    ]);
-    csvRowListString = Dsl.csvEncode([
-      Customer.convert.titles(),
-      ...csvRowList,
-    ]);
-    csvRowFileString = Dsl.csvEncode([
-      Customer.convert.titles(),
-      csvRow,
-    ]);
-    csvRowListFileString = Dsl.csvEncode([
-      Customer.convert.titles(),
-      ...csvRowList,
-    ]);
+    csvRowListWithTitles = [Customer.convert.titles(), csvRow];
+    csvRowListString = Dsl.csvEncode(csvRowListWithTitles);
+
     csvRowFile = File('test/test_data/$name.csv');
     csvRowListFile = File('test/test_data/${name}_list.csv');
     jsonMapFile = File('test/test_data/$name.json');

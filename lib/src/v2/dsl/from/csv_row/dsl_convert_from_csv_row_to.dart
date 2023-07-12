@@ -20,7 +20,6 @@ class DslConvertFromCsvRowTo<T extends BaseModel<T>> with DslTransformerFrom<T, 
 
   @override
   String csvRowString(CsvRow csvRow) => Dsl.csvEncode([
-        _dsl.titles,
         csvRow,
       ]);
 

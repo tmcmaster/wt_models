@@ -5,7 +5,7 @@ import '../../../dsl_test_data.dart';
 import '../../../models/customer.dart';
 
 void main() {
-  final log = logger('DSL Convert From CsvRowFile Test', level: Level.warning);
+  final log = logger('DSL Convert From CsvRowListFile Test', level: Level.warning);
 
   final testCustomer = DslTestData.customer();
   log.d('Testing data: ${testCustomer.model}');
@@ -48,7 +48,7 @@ void main() {
     test('To CsvRowListString', () {
       final csvRowString =
           Customer.convert.from.csvRowListFile.to.csvRowListString(testCustomer.csvRowListFile);
-      expect(csvRowString, testCustomer.csvRowString);
+      expect(csvRowString, testCustomer.csvRowListString);
     });
     test('To CsvRowListFile', () {
       Customer.convert.from.csvRowListFile.to

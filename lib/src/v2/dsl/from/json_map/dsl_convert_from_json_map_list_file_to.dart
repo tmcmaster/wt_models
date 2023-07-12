@@ -23,11 +23,12 @@ class DslConvertFromJsonMapListFileTo<T extends BaseModel<T>> with DslTransforme
 
   @override
   List<CsvRow> csvRowList(File jsonMapListFile) {
-    return jsonMapList(jsonMapListFile)
-        .map(
-          (jsonMap) => Dsl.jsonMapToCsvRow(jsonMap, _dsl.titles),
-        )
-        .toList();
+    return [
+      _dsl.titles,
+      ...jsonMapList(jsonMapListFile).map(
+        (jsonMap) => Dsl.jsonMapToCsvRow(jsonMap, _dsl.titles),
+      ),
+    ];
   }
 
   @override

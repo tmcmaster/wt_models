@@ -25,6 +25,13 @@ class Dsl<T extends BaseModel<T>> {
   static final csvEncode = const ListToCsvConverter(delimitAllFields: true, eol: '\n').convert;
   static final csvDecode = const CsvToListConverter(eol: '\n').convert;
 
+  static JsonMap dynamicMapDecoder(DynamicMap map) =>
+      {for (final e in map.entries) e.key.toString(): e.value};
+  static DynamicMap dynamicMapEncoder(JsonMap map) => map;
+
+  static JsonMap objectMapDecoder(DynamicMap map) => dynamicMapDecoder(map);
+  static DynamicMap objectMapEncoder(JsonMap map) => map;
+
   static JsonMap firebaseMapDecoder(Map<Object?, Object?> map) =>
       FirebaseTransformer.convertSnapshotMap(map);
   static JsonMap firebaseMapEncoder(JsonMap map) => map;
@@ -39,11 +46,11 @@ class Dsl<T extends BaseModel<T>> {
   static List<CsvRow> stringToCsvRowList(String csvListString) {
     final csvRowList = csvDecode(csvListString);
     if (csvRowList.isEmpty) throw Exception('There were no records.');
-    return csvRowList.sublist(1);
+    return csvRowList;
   }
 
   static CsvRow stringToCsvRow(String csvRowString) {
-    final csvRowList = stringToCsvRowList(csvRowString);
+    final csvRowList = stringToCsvRowList(csvRowString).sublist(1);
     if (csvRowList.length != 1) {
       throw Exception('There was not exactly 1 record: ${csvRowList.length}');
     }

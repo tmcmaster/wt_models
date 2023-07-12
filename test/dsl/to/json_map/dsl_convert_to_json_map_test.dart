@@ -32,7 +32,7 @@ void main() {
       expect(jsonMap.length, testCustomer.csvRow.length);
     });
     test('From CsvRowString', () {
-      final jsonMap = Customer.convert.to.jsonMap.from.csvRowString(testCustomer.csvRowString);
+      final jsonMap = Customer.convert.to.jsonMap.from.csvRowString(testCustomer.csvRowListString);
       expect(jsonMap.length, testCustomer.csvRow.length);
     });
     test('From CsvRowFile', () {

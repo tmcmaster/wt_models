@@ -38,7 +38,7 @@ void main() {
     });
     test('From CsvRowString', () {
       Customer.convert.to.jsonMapFile.from
-          .csvRowString(testCustomer.csvRowString, testCustomer.jsonMapFile);
+          .csvRowString(testCustomer.csvRowListString, testCustomer.jsonMapFile);
     });
     test('From CsvRowFile', () {
       Customer.convert.to.jsonMapFile.from

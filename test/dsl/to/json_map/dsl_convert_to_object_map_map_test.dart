@@ -41,7 +41,8 @@ void main() {
       expect(objectMap.length, testCustomer.csvRow.length);
     });
     test('From CsvRowString', () {
-      final objectMap = Customer.convert.to.objectMap.from.csvRowString(testCustomer.csvRowString);
+      final objectMap =
+          Customer.convert.to.objectMap.from.csvRowString(testCustomer.csvRowListString);
       expect(objectMap.length, testCustomer.csvRow.length);
     });
     test('From CsvRowFile', () {

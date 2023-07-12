@@ -33,7 +33,8 @@ void main() {
       expect(jsonMapString, isNotEmpty);
     });
     test('To JsonMapFile', () {
-      Customer.convert.from.jsonMap.to.jsonMapFile(testCustomer.jsonMap, testCustomer.jsonMapFile);
+      Customer.convert.from.jsonMap.to
+          .jsonMapFile(testCustomer.jsonMap, testCustomer.outputJsonMapFile);
     });
     test('To CsvRow', () {
       Customer.convert.from.jsonMap.to.csvRow(testCustomer.jsonMap);
@@ -42,7 +43,8 @@ void main() {
       Customer.convert.from.jsonMap.to.csvRowString(testCustomer.jsonMap);
     });
     test('To CsvRowFile', () {
-      Customer.convert.from.jsonMap.to.csvRowFile(testCustomer.jsonMap, testCustomer.csvRowFile);
+      Customer.convert.from.jsonMap.to
+          .csvRowFile(testCustomer.jsonMap, testCustomer.outputCsvRowFile);
     });
   });
 }

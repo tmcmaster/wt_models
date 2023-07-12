@@ -32,7 +32,8 @@ void main() {
       expect(jsonMapString, isNotEmpty);
     });
     test('To JsonMapFile', () {
-      Customer.convert.from.model.to.jsonMapFile(testCustomer.model, testCustomer.jsonMapFile);
+      Customer.convert.from.model.to
+          .jsonMapFile(testCustomer.model, testCustomer.outputJsonMapFile);
     });
     test('To CsvRow', () {
       final csvRow = Customer.convert.from.model.to.csvRow(testCustomer.model);
@@ -43,7 +44,7 @@ void main() {
       expect(csvRowString.contains(testCustomer.model.name), isTrue);
     });
     test('To CsvRowFile', () {
-      Customer.convert.from.model.to.csvRowFile(testCustomer.model, testCustomer.csvRowFile);
+      Customer.convert.from.model.to.csvRowFile(testCustomer.model, testCustomer.outputCsvRowFile);
     });
   });
 }

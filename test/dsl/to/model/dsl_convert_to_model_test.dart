@@ -32,7 +32,7 @@ void main() {
       expect(customer.name, equals(testCustomer.model.name));
     });
     test('From CsvRowString', () {
-      final customer = Customer.convert.to.model.from.csvRowString(testCustomer.csvRowString);
+      final customer = Customer.convert.to.model.from.csvRowString(testCustomer.csvRowListString);
       expect(customer.name, equals(testCustomer.model.name));
     });
     test('From CsvRowFile', () {

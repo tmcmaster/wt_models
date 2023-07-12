@@ -43,7 +43,7 @@ void main() {
     });
     test('From CsvRowString', () {
       final jsonMapString =
-          Customer.convert.to.jsonMapString.from.csvRowString(testCustomer.csvRowString);
+          Customer.convert.to.jsonMapString.from.csvRowString(testCustomer.csvRowListString);
       expect(jsonMapString.contains(testCustomer.model.name), isTrue);
     });
     test('From CsvRowFile', () {

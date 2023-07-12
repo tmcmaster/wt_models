@@ -42,7 +42,7 @@ void main() {
     });
     test('From CsvRowString', () {
       final dynamicMap =
-          Customer.convert.to.dynamicMap.from.csvRowString(testCustomer.csvRowString);
+          Customer.convert.to.dynamicMap.from.csvRowString(testCustomer.csvRowListString);
       expect(dynamicMap.length, testCustomer.csvRow.length);
     });
     test('From CsvRowFile', () {

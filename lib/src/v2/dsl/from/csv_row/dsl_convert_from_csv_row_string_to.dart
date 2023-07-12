@@ -14,9 +14,8 @@ class DslConvertFromCsvRowStringTo<T extends BaseModel<T>> with DslTransformerFr
   CsvRow csvRow(String csvRowString) => Dsl.stringToCsvRow(csvRowString);
 
   @override
-  void csvRowFile(String csvRowString, File outputCsvRowFile) {
-    // TODO: implement csvRowFile
-  }
+  void csvRowFile(String csvRowString, File outputCsvRowFile) =>
+      outputCsvRowFile.writeAsStringSync(csvRowString);
 
   @override
   String csvRowString(String csvRowString) => csvRowString;
