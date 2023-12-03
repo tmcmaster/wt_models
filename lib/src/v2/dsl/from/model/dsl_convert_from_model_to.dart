@@ -5,7 +5,8 @@ import 'package:wt_models/src/v2/dsl/transforms/dsl/dsl.dart';
 import 'package:wt_models/src/v2/dsl/transforms/from/dsl_transformer_from.dart';
 import 'package:wt_models/src/v2/model_typedefs.dart';
 
-class DslConvertFromModelTo<T extends BaseModel<T>> with DslTransformerFrom<T, T> {
+class DslConvertFromModelTo<T extends BaseModel<T>>
+    with DslTransformerFrom<T, T> {
   final Dsl<T> _dsl;
 
   const DslConvertFromModelTo(this._dsl);
@@ -26,7 +27,8 @@ class DslConvertFromModelTo<T extends BaseModel<T>> with DslTransformerFrom<T, T
   String jsonMapString(T model) => Dsl.jsonEncode(jsonMap(model));
 
   @override
-  void jsonMapFile(T model, File file) => file.writeAsStringSync(jsonMapString(model));
+  void jsonMapFile(T model, File file) =>
+      file.writeAsStringSync(jsonMapString(model));
 
   @override
   CsvRow csvRow(T model) {
@@ -38,5 +40,6 @@ class DslConvertFromModelTo<T extends BaseModel<T>> with DslTransformerFrom<T, T
   String csvRowString(T model) => Dsl.csvEncode([csvRow(model)]);
 
   @override
-  void csvRowFile(T model, File file) => file.writeAsStringSync(csvRowString(model));
+  void csvRowFile(T model, File file) =>
+      file.writeAsStringSync(csvRowString(model));
 }

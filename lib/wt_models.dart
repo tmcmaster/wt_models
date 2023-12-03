@@ -19,3 +19,4 @@ export 'src/v2/dsl/transforms/dsl/dsl.dart';
 export 'src/v2/dsl/transforms/dsl/dsl_convert.dart';
 export 'src/v2/model_transform.dart';
 export 'src/v2/model_typedefs.dart';
+export 'src/v2/scalar_transforms.dart';

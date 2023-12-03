@@ -22,7 +22,8 @@ class Dsl<T extends BaseModel<T>> {
 
   static final jsonEncode = const JsonEncoder.withIndent('  ').convert;
   static final jsonDecode = const JsonDecoder().convert;
-  static final csvEncode = const ListToCsvConverter(delimitAllFields: true, eol: '\n').convert;
+  static final csvEncode =
+      const ListToCsvConverter(delimitAllFields: true, eol: '\n').convert;
   static final csvDecode = const CsvToListConverter(eol: '\n').convert;
 
   static JsonMap dynamicMapDecoder(DynamicMap map) =>
@@ -36,12 +37,14 @@ class Dsl<T extends BaseModel<T>> {
       FirebaseTransformer.convertSnapshotMap(map);
   static JsonMap firebaseMapEncoder(JsonMap map) => map;
 
-  static List firebaseListDecoder<T>(List list) => FirebaseTransformer.convertList(list);
+  static List firebaseListDecoder<T>(List list) =>
+      FirebaseTransformer.convertList(list);
   static List firebaseListEncoder(List list) => list;
 
   static void fileToString(File file) => file.readAsStringSync();
 
-  static JsonMap stringToJsonMap(String jsonMapString) => jsonDecode(jsonMapString) as JsonMap;
+  static JsonMap stringToJsonMap(String jsonMapString) =>
+      jsonDecode(jsonMapString) as JsonMap;
 
   static List<CsvRow> stringToCsvRowList(String csvListString) {
     final csvRowList = csvDecode(csvListString);
