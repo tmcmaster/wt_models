@@ -45,7 +45,7 @@ class ToModelFrom<T> {
 
   T csvToModel(List<dynamic> csv) {
     final jsonData = {
-      for (var i = 0; i < _titles.length; i++) _titles[i]: csv[i] == '' ? null : csv[i]
+      for (var i = 0; i < _titles.length; i++) _titles[i]: csv[i] == '' ? null : csv[i],
     };
     return json(jsonData);
   }
