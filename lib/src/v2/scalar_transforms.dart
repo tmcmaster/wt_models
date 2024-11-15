@@ -4,11 +4,7 @@ mixin ScalarTransforms {
   }
 
   static double jsonToDouble(dynamic value) {
-    return value is double
-        ? value
-        : (value is int
-            ? value.toDouble()
-            : double.tryParse(value.toString()) ?? 0.0);
+    return value is double ? value : (value is int ? value.toDouble() : double.tryParse(value.toString()) ?? 0.0);
   }
 
   static int intToJson(int value) {
@@ -16,15 +12,15 @@ mixin ScalarTransforms {
   }
 
   static int jsonToInt(dynamic value) {
-    return value is int
-        ? value
-        : (value is double
-            ? value.toInt()
-            : int.tryParse(value.toString()) ?? 0);
+    return value is int ? value : (value is double ? value.toInt() : int.tryParse(value.toString()) ?? 0);
   }
 
-  static int boolToJson(int value) {
+  static bool boolToJson(bool value) {
     return value;
+  }
+
+  static String dynamicToString(dynamic value) {
+    return value == null ? '' : value.toString();
   }
 
   static bool dynamicToBool(dynamic value) {
