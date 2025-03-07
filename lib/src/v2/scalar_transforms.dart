@@ -15,6 +15,14 @@ mixin ScalarTransforms {
     return value is int ? value : (value is double ? value.toInt() : int.tryParse(value.toString()) ?? 0);
   }
 
+  static num numToJson(num value) {
+    return value;
+  }
+
+  static num jsonToNum(dynamic value) {
+    return value is num ? value : num.tryParse(value.toString()) ?? 0;
+  }
+
   static bool boolToJson(bool value) {
     return value;
   }
