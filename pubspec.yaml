@@ -5,20 +5,8 @@ publish_to: 'none'
 homepage: https://github.com/tmcmaster/wt_models
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
-
-# Scripts to be run with rps
-scripts:
-  init: flutter pub get
-  clean: flutter clean
-  refresh: flutter clean; flutter pub get
-  test: flutter test
-  analise: flutter analyze
-  freezed:
-    build: dart run build_runner build --delete-conflicting-outputs
-  coverage:
-    generate: ./bin/generate_coverage.sh
-    view: open coverage/html/index.html
+  sdk: '>=3.1.0 <4.0.0'
+  flutter: '>=3.29.2'
 
 dependencies:
   csv:

@@ -1,0 +1,12 @@
+scripts:
+  init: flutter pub get
+  clean: flutter clean
+  refresh: flutter clean; flutter pub get
+  update: flutter clean; rm pubspec.lock; dart pub update
+  test: flutter test
+  analise: flutter analyze
+  freezed:
+    build: dart run build_runner build --delete-conflicting-outputs
+  coverage:
+    generate: ./bin/generate_coverage.sh
+    view: open coverage/html/index.html
