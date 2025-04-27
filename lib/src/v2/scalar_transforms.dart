@@ -4,7 +4,7 @@ mixin ScalarTransforms {
   }
 
   static double jsonToDouble(dynamic value) {
-    return value is double ? value : (value is int ? value.toDouble() : double.tryParse(value.toString()) ?? 0.0);
+    return value is double ? value : (value is num ? value.toDouble() : double.tryParse(value.toString()) ?? 0.0);
   }
 
   static int intToJson(int value) {

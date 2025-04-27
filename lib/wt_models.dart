@@ -1,6 +1,3 @@
-/// This is a library for using freezed to help manage models.
-library wt_models;
-
 export 'src/base_model.dart';
 export 'src/csv_support.dart';
 export 'src/id_json_support.dart';
