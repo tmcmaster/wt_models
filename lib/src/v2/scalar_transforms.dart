@@ -7,6 +7,9 @@ mixin ScalarTransforms {
     return value is double ? value : (value is num ? value.toDouble() : double.tryParse(value.toString()) ?? 0.0);
   }
 
+  static double? jsonToDoubleOrNull(dynamic json) => json == null ? null : ScalarTransforms.jsonToDouble(json);
+  static dynamic doubleToJsonOrNull(double? value) => value == null ? null : ScalarTransforms.doubleToJson(value);
+
   static int intToJson(int value) {
     return value;
   }
