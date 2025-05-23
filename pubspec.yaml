@@ -2,6 +2,7 @@ name: wt_models
 description: Package to assist with transforming model data into different formats.
 version: 1.0.0+1
 publish_to: 'none'
+repository: https://github.com/tmcmaster/wt_models/tree/wix_admin
 homepage: https://github.com/tmcmaster/wt_models
 
 environment:
