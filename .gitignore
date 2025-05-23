@@ -33,3 +33,4 @@ junk
 *.g.dart
 *.freezed.dart
 coverage
+.flutter-plugins-dependencies

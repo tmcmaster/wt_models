@@ -7,14 +7,15 @@ environment:
   sdk: '>=3.1.0 <4.0.0'
   flutter: '>=3.29.2'
 
+flutter:
+  uses-material-design: true
+
 dependencies:
   cupertino_icons: ^1.0.5
   flutter:
     sdk: flutter
-  freezed:
-  freezed_annotation:
-  json_annotation: ^4.8.1
-  json_serializable:
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
   wt_logging:
     git:
       url: git@github.com:tmcmaster/wt_logging.git
@@ -23,8 +24,11 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.6
+  freezed: ^2.4.1
+  json_serializable:
   flutter_test:
     sdk: flutter
 
-flutter:
-  uses-material-design: true
+dependency_overrides:
+  wt_logging:
+    path: ../../wt_logging
